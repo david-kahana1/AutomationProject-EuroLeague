@@ -35,6 +35,12 @@ def setup_euroleague(request):
         context = browser.new_context()
         page = context.new_page()
         page.goto(BASE_URL)
+        page.wait_for_load_state("networkidle")
+
+        try:
+            page.get_by_role("button", name="Reject All Cookies").click(timeout=60000) #Reject Cookies, need timeout for CI\CD
+        except:
+            print("Cookie banner not shown - continuing")
 
         request.node.page = page
 

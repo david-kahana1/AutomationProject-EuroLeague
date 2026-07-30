@@ -1,4 +1,4 @@
-from playwright.sync_api import expect
+
 
 from page_object_euroleague.pages.basePage import BasePage
 
@@ -9,12 +9,6 @@ class homePage(BasePage):
         super().__init__(page)
         self.page = page
         self.base_page = BasePage(page)
-        self.page.wait_for_load_state("networkidle") #Reject All Cookies for GitHub CI/CD runs
-        try:
-            self.page.get_by_role("button", name="Reject All Cookies").wait_for(state="visible", timeout=60000)
-            self.page.get_by_role("button", name="Reject All Cookies").click()
-        except:
-            print("Cookie banner not shown - continuing")
 
 
     def go_to_players_page(self):
