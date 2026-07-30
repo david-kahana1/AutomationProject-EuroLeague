@@ -1,6 +1,6 @@
 import os
 
-IS_HEADLESS = True #os.getenv("CI") == "true" #for GitHub CI/CD, in locals run is "False"
+IS_HEADLESS = os.getenv("CI") == "true" #for GitHub CI/CD, in locals run is "False"
 
 BROWSER = "Chromium" #also support 'Firefox'
 
