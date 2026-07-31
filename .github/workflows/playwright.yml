@@ -22,7 +22,7 @@ jobs:
       run: |
         cd page_object_euroleague
         pip install -r requirements.txt
-        playwright install
+        playwright install --with-deps chrome
 
     - name: Run tests
       run: |

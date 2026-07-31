@@ -3,6 +3,8 @@ import os
 import allure
 import pytest
 from playwright.sync_api import sync_playwright
+import playwright_stealth
+stealth_sync = playwright_stealth.stealth_sync
 
 from page_object_euroleague.config import BROWSER, IS_HEADLESS, BASE_URL, CONTEXT_SETTINGS, BROWSER_ARGS
 
@@ -34,14 +36,14 @@ def setup_euroleague(request):
         else: browser = p.firefox.launch(headless=IS_HEADLESS)
         context = browser.new_context(**CONTEXT_SETTINGS)
         page = context.new_page()
-        page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+        stealth_sync(page)
 
         page.goto(BASE_URL)
         page.wait_for_load_state("networkidle")
         try:
-            page.get_by_role("button", name="Reject All Cookies").click(timeout=3000)
-        except Exception:
-            print("Cookie banner not shown - continuing")
+            page.locator("button:has-text('Reject All Cookies')").click(timeout=10000)
+        except Exception as e:
+            print(f"Cookie banner not shown - continuing. Error: {e}")
 
         request.node.page = page
 
