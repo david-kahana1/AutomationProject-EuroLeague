@@ -3,8 +3,8 @@ import os
 import allure
 import pytest
 from playwright.sync_api import sync_playwright
-import playwright_stealth
-stealth_sync = playwright_stealth.stealth_sync
+
+
 
 from page_object_euroleague.config import BROWSER, IS_HEADLESS, BASE_URL, CONTEXT_SETTINGS, BROWSER_ARGS
 
@@ -36,7 +36,7 @@ def setup_euroleague(request):
         else: browser = p.firefox.launch(headless=IS_HEADLESS)
         context = browser.new_context(**CONTEXT_SETTINGS)
         page = context.new_page()
-        stealth_sync(page)
+
 
         page.goto(BASE_URL)
         page.wait_for_load_state("networkidle")

@@ -10,17 +10,19 @@ BASE_URL = "https://www.euroleaguebasketball.net/euroleague/"
 # without being blocked by the website’s security layer:
 
 BROWSER_ARGS = \
-  {
+    {
     "channel": "chrome",
-    "args":
-      [
+    "ignore_default_args": ["--enable-automation"],
+    "args": [
         "--disable-blink-features=AutomationControlled",
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--use-gl=angle",
-        "--use-angle=swiftshader"
-      ]
-}
+        "--use-angle=swiftshader",
+        "--disable-infobars",
+        "--window-position=0,0"
+    ]
+  }
 
 CONTEXT_SETTINGS = \
   {
