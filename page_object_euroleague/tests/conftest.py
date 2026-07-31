@@ -4,7 +4,7 @@ import allure
 import pytest
 from playwright.sync_api import sync_playwright
 
-from page_object_euroleague.config import BROWSER, IS_HEADLESS, BASE_URL
+from page_object_euroleague.config import BROWSER, IS_HEADLESS, BASE_URL, CONTEXT_SETTINGS, BROWSER_ARGS
 
 from page_object_euroleague.pages.home_page import homePage
 from page_object_euroleague.pages.players_page import playersPage
@@ -30,17 +30,15 @@ def pytest_runtest_makereport(item, call):
 
 def setup_euroleague(request):
     with sync_playwright() as p:
-        if BROWSER == "Chromium": browser = p.chromium.launch(headless=IS_HEADLESS)
+        if BROWSER == "Chromium": browser = p.chromium.launch(headless=IS_HEADLESS, **BROWSER_ARGS)
         else: browser = p.firefox.launch(headless=IS_HEADLESS)
-        context = browser.new_context()
+        context = browser.new_context(**CONTEXT_SETTINGS)
         page = context.new_page()
+        page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+
         page.goto(BASE_URL)
         page.wait_for_load_state("networkidle")
-
-        try:
-            page.get_by_role("button", name="Reject All Cookies").click(timeout=60000) #Reject Cookies, need timeout for CI\CD
-        except:
-            print("Cookie banner not shown - continuing")
+        page.get_by_role("button", name="Reject All Cookies").click(timeout=1000)
 
         request.node.page = page
 
