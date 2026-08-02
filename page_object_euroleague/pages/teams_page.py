@@ -6,7 +6,7 @@ from page_object_euroleague.pages.basePage import BasePage
 
 class teamsPage(BasePage):
 
-    def __init__(self,page):
+    def __init__(self, page):
         super().__init__(page)
         self.page = page
         self.base_page = BasePage(page)
@@ -72,7 +72,7 @@ class teamsPage(BasePage):
 
 
     def get_coach_nationality(self, coach_name: str):
-        self.page.get_by_role("link", name=coach_name).click() #currently this link got '500 code' (Server error)
+        self.page.get_by_role("link", name=coach_name).click() #Currently this link got '500 code' (Server error)
         coach_nationality_text = self.page.locator("[class='coach-info-list_info__N4op5']").text_content()
         start_index = coach_nationality_text.find('Nationality')
         start_index += len('Nationality')
@@ -80,7 +80,6 @@ class teamsPage(BasePage):
         coach_nationality_name = coach_nationality_text[start_index:end_index]
         print(f"the coach nationality is: {coach_nationality_name}")
         return coach_nationality_name
-
 
 
     def change_roster_to_year(self,roster_year: str):

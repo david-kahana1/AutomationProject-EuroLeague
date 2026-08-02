@@ -1,11 +1,11 @@
-
+from playwright.sync_api import expect
 
 from page_object_euroleague.pages.basePage import BasePage
 
 
 class homePage(BasePage):
 
-    def __init__(self,page):
+    def __init__(self, page):
         super().__init__(page)
         self.page = page
         self.base_page = BasePage(page)
@@ -56,7 +56,7 @@ class homePage(BasePage):
         return login_message_text
 
 
-    def get_team_from_menu(self,team_name):
+    def get_team_from_menu(self, team_name: str):
         print("Get team menu bar")
         self.page.get_by_role("link", name="Teams").first.hover()
         team_button = self.page.get_by_role("link", name=team_name).first
@@ -65,6 +65,6 @@ class homePage(BasePage):
         return self.page.url
 
 
-    def get_team_by_link(self,team_name: str, link_name: str):
+    def get_team_by_link(self, team_name: str, link_name: str):
         return self.base_page.go_to_team(team_name,link_name)
 

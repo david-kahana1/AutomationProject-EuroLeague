@@ -19,7 +19,7 @@ class TestTeamInformation():
         home_page.go_to_teams_page()
         teams_page.search_a_team("Real Madrid")
         teams_page.press_on_the_founded_team("Real Madrid")
-        team_wins = teams_page.take_team_standing() ## somtime is not working, wait for next season ##
+        team_wins = teams_page.take_team_standing()
         assert team_wins >= 0 , "the standing not impossible"
 
 
@@ -29,11 +29,11 @@ class TestTeamInformation():
         home_page.go_to_teams_page()
         teams_page.search_a_team("maccabi")
         teams_page.press_on_the_founded_team("maccabi")
-        team_wins = teams_page.take_team_standing() ## somtime is not working, wait for next season ##
+        team_wins = teams_page.take_team_standing()
         assert team_wins >= 0 , "the team need to improve"
 
 
-    def test_get_team_roster(self,setup_euroleague):
+    def test_get_team_roster(self, setup_euroleague):
         print("Test team roster Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_teams_page()
@@ -43,7 +43,7 @@ class TestTeamInformation():
         assert len_roster >= 15 , "the roster too small"
 
 
-    def test_get_team_coach(self,setup_euroleague):
+    def test_get_team_coach(self, setup_euroleague):
         print("Test team coach Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_teams_page()
@@ -53,7 +53,7 @@ class TestTeamInformation():
         assert coach_name == "ODED KATTASH", "it's not the original coach"
 
 
-    def test_get_fenerbahce_coach(self,setup_euroleague):
+    def test_get_fenerbahce_coach(self, setup_euroleague):
         print("Test fenerbahce coach Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_teams_page()
@@ -63,7 +63,7 @@ class TestTeamInformation():
         assert coach_name == "SARAS JASIKEVICIUS", "it's not the original coach"
 
 
-    def test_get_coach_nationality(self,setup_euroleague):
+    def test_get_coach_nationality(self, setup_euroleague):
         print("Test get coach nationality Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_teams_page()
@@ -73,7 +73,7 @@ class TestTeamInformation():
         assert coach_nationality == "Israel", "the nationality incorrect"
 
 
-    def test_get_old_roster(self,setup_euroleague):
+    def test_get_old_roster(self, setup_euroleague):
         print("Test get coach nationality Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_teams_page()

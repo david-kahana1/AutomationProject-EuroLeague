@@ -7,13 +7,14 @@ BROWSER = "Chromium" #also support 'Firefox'
 BASE_URL = "https://www.euroleaguebasketball.net/euroleague/"
 
 # These settings allow the CI pipeline to run the tests successfully-
-# without being blocked by the website’s security layer:
+# without being blocked by the website's security layer:
 
 BROWSER_ARGS = \
     {
     "channel": "chrome",
     "ignore_default_args": ["--enable-automation"],
-    "args": [
+    "args":
+      [
         "--disable-blink-features=AutomationControlled",
         "--no-sandbox",
         "--disable-setuid-sandbox",
@@ -21,8 +22,8 @@ BROWSER_ARGS = \
         "--use-angle=swiftshader",
         "--disable-infobars",
         "--window-position=0,0"
-    ]
-  }
+      ]
+    }
 
 CONTEXT_SETTINGS = \
   {
@@ -118,5 +119,4 @@ TEAMS = [
     "link_name": "Zalgiris Kaunas"
   }
 ]
-
 

@@ -4,8 +4,6 @@ import allure
 import pytest
 from playwright.sync_api import sync_playwright
 
-
-
 from page_object_euroleague.config import BROWSER, IS_HEADLESS, BASE_URL, CONTEXT_SETTINGS, BROWSER_ARGS
 
 from page_object_euroleague.pages.home_page import homePage
@@ -36,7 +34,6 @@ def setup_euroleague(request):
         else: browser = p.firefox.launch(headless=IS_HEADLESS)
         context = browser.new_context(**CONTEXT_SETTINGS)
         page = context.new_page()
-
 
         page.goto(BASE_URL)
         page.wait_for_load_state("networkidle")

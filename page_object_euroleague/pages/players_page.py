@@ -5,19 +5,19 @@ from page_object_euroleague.pages.basePage import BasePage
 
 class playersPage(BasePage):
 
-    def __init__(self,page):
+    def __init__(self, page):
         super().__init__(page)
         self.page = page
         self.base_page = BasePage(page)
         self.player_stats = page.locator("[class='stats-item-module-scss-module__YmOhIW__value']")
 
 
-    def search_player(self, player_name):
+    def search_player(self, player_name: str):
         self.page.locator("#main #season").select_option("E2025")  # need for find players
         self.base_page.do_search("Search player...", player_name)
 
 
-    def press_on_player(self, player_name):
+    def press_on_player(self, player_name: str):
         player = self.page.get_by_text(player_name)
         player.click()
         player_full_name_text = self.page.locator("[class='text-3xl font-bold text-primary']").text_content()
