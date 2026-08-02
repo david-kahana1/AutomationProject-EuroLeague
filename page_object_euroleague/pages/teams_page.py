@@ -29,6 +29,12 @@ class teamsPage(BasePage):
         return team_full_name_text
 
 
+    def change_roster_to_year(self,roster_year: str):
+        print("Change roster to year")
+        self.base_page.change_roster_per_year(roster_year)
+        return self.page.url
+
+
     def take_team_standing(self):
         self.page.get_by_role("link", name="Team", exact=True).click()
         team_standing = self.page.locator("[class='club-info-module-scss-module__ckJnHG__list club-info-module-scss-module__ckJnHG___isTeamHero']")
@@ -61,7 +67,7 @@ class teamsPage(BasePage):
 
 
     def valid_the_coach(self, coach_name: str):
-        with allure.step(f"valid_the_coach: {coach_name}"):
+        with allure.step(f"valid_the_coach: '{coach_name}'"):
             coach_text = self.page.get_by_role("link", name=coach_name).text_content()
             start_index = coach_text.find('description":"')
             start_index += len('description":"')
@@ -72,18 +78,13 @@ class teamsPage(BasePage):
 
 
     def get_coach_nationality(self, coach_name: str):
-        self.page.get_by_role("link", name=coach_name).click() #Currently this link got '500 code' (Server error)
-        coach_nationality_text = self.page.locator("[class='coach-info-list_info__N4op5']").text_content()
-        start_index = coach_nationality_text.find('Nationality')
-        start_index += len('Nationality')
-        end_index = coach_nationality_text.find('Born', start_index)
-        coach_nationality_name = coach_nationality_text[start_index:end_index]
-        print(f"the coach nationality is: {coach_nationality_name}")
-        return coach_nationality_name
-
-
-    def change_roster_to_year(self,roster_year: str):
-        print("Change roster to year")
-        self.base_page.change_roster_per_year(roster_year)
-        return self.page.url
+        with allure.step(f"getting '{coach_name}' nationality"):
+            self.page.get_by_role("link", name=coach_name).click() #Currently this link got '500 code' (Server error)
+            coach_nationality_text = self.page.locator("[class='coach-info-list_info__N4op5']").text_content()
+            start_index = coach_nationality_text.find('Nationality')
+            start_index += len('Nationality')
+            end_index = coach_nationality_text.find('Born', start_index)
+            coach_nationality_name = coach_nationality_text[start_index:end_index]
+            print(f"the coach nationality is: {coach_nationality_name}")
+            return coach_nationality_name
 

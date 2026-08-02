@@ -95,8 +95,8 @@ class TestNavigation():
 
     @pytest.mark.parametrize("team", TEAMS) #Data Driven Test, running for all the teams.
     def test_go_to_team_by_link(self, setup_euroleague, team):
-        allure.dynamic.title(f"Testing navigation to {team['link_name']} Start")
-        print(f"Testing navigation to {team['link_name']} Start")
+        allure.dynamic.title(f"Testing navigation to '{team['link_name']}' page")
+        print(f"Testing navigation to '{team['link_name']}' Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.get_team_by_link(**team)
         assert team["team_name"] in page.url, f"the Navigation to {team['link_name']} was failed"
