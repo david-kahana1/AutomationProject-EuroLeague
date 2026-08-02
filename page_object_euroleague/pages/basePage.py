@@ -4,7 +4,7 @@ import allure
 
 class BasePage():
 
-    def __init__(self,page):
+    def __init__(self, page):
         self.page = page
 
 
@@ -18,8 +18,8 @@ class BasePage():
 
 
     def go_to_page(self, page_name: str, element_name: str):
-        with allure.step(f"Go to '{element_name}' page"):
-            print(f"Go to '{element_name}' page")
+        with allure.step(f"Go to {element_name} page"):
+            print(f"Go to {element_name} page")
             page_name_button = self.page.get_by_role("link", name=element_name).first
             page_name_button.click()
             self.page.wait_for_url(f"**/{page_name}/") #Verifies URL change during full execution

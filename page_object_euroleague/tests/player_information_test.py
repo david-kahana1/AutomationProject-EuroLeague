@@ -11,7 +11,7 @@ class TestPlayerInformation():
         home_page.go_to_players_page()
         players_page.search_player("Deni Avdija")
         not_found = players_page.print_no_players_found()
-        assert not_found == "No players found yet" , "the search not succeeded"
+        assert not_found == "No players found yet", "the search not succeeded"
 
 
     def test_search_tamir_blatt(self, setup_euroleague):
@@ -39,7 +39,7 @@ class TestPlayerInformation():
         players_page.search_player("DIBARTOLOMEO")
         players_page.press_on_player("JOHN")
         number_and_position = players_page.get_player_information()
-        assert number_and_position == "#12•Guard" , "the information is wrong"
+        assert number_and_position == "#12•Guard", "the information is wrong"
 
 
     def test_take_player_stats(self, setup_euroleague):
@@ -51,15 +51,15 @@ class TestPlayerInformation():
         player_points_avg = players_page.take_player_points_avg()
         players_page.take_player_rebounds_avg()
         players_page.take_player_assists_avg()
-        assert player_points_avg == 4.7 , "the average is not correct"
+        assert player_points_avg == 4.7, "the average is not correct"
 
 
     def test_take_player_point_record(self, setup_euroleague):
-        print("Test take point_record Start")
+        print("Test take point record Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_players_page()
         players_page.search_player("SASHA")
         players_page.press_on_player("VEZENKOV")
         player_points = players_page.take_player_points_record()
-        assert player_points >= 45 , "the record is not correct"
+        assert player_points >= 45, "the record is not correct"
 

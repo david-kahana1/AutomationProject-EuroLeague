@@ -10,7 +10,7 @@ class TestTeamInformation():
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_teams_page()
         team_full_name = teams_page.press_on_team("Hapoel IBI Tel Aviv")
-        assert team_full_name == "Hapoel IBI Tel Aviv Roster" , "it's not hapoel"
+        assert team_full_name == "Hapoel IBI Tel Aviv Roster", "it's not hapoel"
 
 
     def test_team_standing(self, setup_euroleague):
@@ -20,7 +20,7 @@ class TestTeamInformation():
         teams_page.search_a_team("Real Madrid")
         teams_page.press_on_the_founded_team("Real Madrid")
         team_wins = teams_page.take_team_standing()
-        assert team_wins >= 0 , "the standing not impossible"
+        assert team_wins >= 0, "the standing not impossible"
 
 
     def test_maccabi_standing(self, setup_euroleague):
@@ -30,7 +30,7 @@ class TestTeamInformation():
         teams_page.search_a_team("maccabi")
         teams_page.press_on_the_founded_team("maccabi")
         team_wins = teams_page.take_team_standing()
-        assert team_wins >= 0 , "the team need to improve"
+        assert team_wins >= 0, "the team need to improve"
 
 
     def test_get_team_roster(self, setup_euroleague):
@@ -40,7 +40,7 @@ class TestTeamInformation():
         teams_page.search_a_team("maccabi")
         teams_page.press_on_the_founded_team("maccabi")
         len_roster = teams_page.teke_the_team_roster()
-        assert len_roster >= 15 , "the roster too small"
+        assert len_roster >= 15, "the roster too small"
 
 
     def test_get_team_coach(self, setup_euroleague):

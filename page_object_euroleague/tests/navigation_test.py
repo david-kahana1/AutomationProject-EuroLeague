@@ -30,7 +30,7 @@ class TestNavigation():
 
 
     def test_go_to_home_page(self, setup_euroleague):
-        print("Test test go to home pages Start")
+        print("Test go to home pages Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_games_page()
         home_page.press_on_logo()
@@ -38,56 +38,56 @@ class TestNavigation():
 
 
     def test_go_to_games(self, setup_euroleague):
-        print("Test test go to games Start")
+        print("Test go to games Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_games_page()
         assert page.url == "https://www.euroleaguebasketball.net/en/euroleague/game-center/", "it's not the URL of games pages"
 
 
     def test_go_to_standings(self, setup_euroleague):
-        print("Test test go to standings Start")
+        print("Test go to standings Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_standings_page()
         assert page.url == "https://www.euroleaguebasketball.net/en/euroleague/standings/", "it's not the URL of standings pages"
 
 
     def test_go_to_stats(self, setup_euroleague):
-        print("Test test go to stats Start")
+        print("Test go to stats Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_stats_page()
         assert page.url == "https://www.euroleaguebasketball.net/en/euroleague/stats/", "it's not the URL of stats pages"
 
 
     def test_go_to_news(self, setup_euroleague):
-        print("Test test go to news Start")
+        print("Test go to news Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_news_page()
         assert page.url == "https://www.euroleaguebasketball.net/en/euroleague/news/", "it's not the URL of news pages"
 
 
     def test_go_to_final_four(self, setup_euroleague):
-        print("Test test go to final four Start")
+        print("Test go to final four Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_final_four_page()
         assert page.url == "https://www.euroleaguebasketball.net/en/euroleague/final-four/", "it's not the URL of final-four pages"
 
 
     def test_go_to_fantasy(self, setup_euroleague):
-        print("Test test go to fantasy Start")
+        print("Test go to fantasy Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_fantasy_page()
         assert page.url == "https://www.euroleaguebasketball.net/en/euroleague/fantasy/", "it's not the URL of fantasy pages"
 
 
     def test_go_to_videos(self, setup_euroleague):
-        print("Test test go to videos Start")
+        print("Test go to videos Start")
         page, home_page, players_page, teams_page = setup_euroleague
         home_page.go_to_videos_page()
         assert page.url == "https://www.euroleaguebasketball.net/en/euroleague/videos/all/", "it's not the URL of videos pages"
 
 
     def test_go_to_login(self, setup_euroleague):
-        print("Test test go to login Start")
+        print("Test go to login Start")
         page, home_page, players_page, teams_page = setup_euroleague
         login_message_text = home_page.go_to_login_page()
         assert login_message_text == "Login with your EuroLeague ID", "it's not the URL of login pages"
